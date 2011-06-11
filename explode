@@ -1,0 +1,22 @@
+# set -x
+
+ARGNUM="$#"
+
+if [ $ARGNUM -le 0 ] 
+then
+	echo Error: No directory specified
+	exit
+fi
+
+for THEARG
+do
+    if [ ! -d "$THEARG" ]
+    then
+    	echo Error: $THEARG is not a directory!
+    	continue
+    fi
+   cd "$THEARG"
+   mv * ..
+   cd ..
+   rmdir "$THEARG"
+  done
