@@ -1,0 +1,7 @@
+# don't correct the arguments of mkdir--by design they don't already exist
+alias mkdir='nocorrect mkdir'
+
+# add color to ls
+alias ls='ls -G'
+# ls with all, long, humanly readable sizes, and color
+alias la='ls -alhG'
