@@ -1,3 +1,6 @@
+# zshrc
+# JRW 06/12/11
+#
 # Setting to allow use of colors in prompt
 autoload colors zsh/terminfo
 if [[ "$terminfo[colors]" -ge 8 ]]; then

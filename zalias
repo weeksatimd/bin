@@ -1,3 +1,6 @@
+# Aliases for ZSH
+# JRW 06/12/11
+#
 # don't correct the arguments of mkdir--by design they don't already exist
 alias mkdir='nocorrect mkdir'
 
@@ -5,3 +8,7 @@ alias mkdir='nocorrect mkdir'
 alias ls='ls -G'
 # ls with all, long, humanly readable sizes, and color
 alias la='ls -alhG'
+# like la but not including hidden files
+alias ll='ls -lhG'
+# show me my dotfiles
+alias ldot='ls -adhG .*'
