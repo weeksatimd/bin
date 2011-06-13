@@ -7,9 +7,14 @@ if [[ "$terminfo[colors]" -ge 8 ]]; then
     colors
 fi
 
+# Load prompt and completion functions
+autoload -U promptinit; promptinit
+autoload -U compinit; compinit
+
 # Set prompt
 PROMPT="%{${fg[white]}%}%~
 %# "%{${fg[default]}%}
+RPROMPT='[%w, %T]'
 
 # Set the window title to: username@hostname: directory
 case $TERM in
@@ -66,5 +71,5 @@ if [[ -r ~/bin/zalias ]]; then
 fi
 
 # Colorize directory listings
-LSCOLORS='GxcxcxdxbxegedabagacBx'
+LSCOLORS='GxcxcxdxbxegedabagdxBx'
 export LSCOLORS

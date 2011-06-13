@@ -7,8 +7,15 @@ alias mkdir='nocorrect mkdir'
 # add color to ls
 alias ls='ls -G'
 # ls with all, long, humanly readable sizes, and color
-alias la='ls -alhG'
+alias la='ls -AlhG'
 # like la but not including hidden files
 alias ll='ls -lhG'
 # show me my dotfiles
-alias ldot='ls -adhG .*'
+alias ldot='ls -AdhG .*'
+# sort by date
+alias lt='ls -lthG'
+
+# Path aliases
+temp=~/Dropbox/Temp
+
+alias vols='cd /Volumes; ls -G'
