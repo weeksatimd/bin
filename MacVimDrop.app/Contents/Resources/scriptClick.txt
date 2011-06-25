@@ -1,0 +1,13 @@
+tell application "Finder"
+	set filespath to selection as alias list
+	if filespath is {} then
+		tell application "APP"
+			activate
+		end tell
+	else
+		tell application "APP"
+			open filespath
+			activate
+		end tell
+	end if
+end tell

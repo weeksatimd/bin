@@ -19,3 +19,7 @@ alias lt='ls -lthG'
 temp=~/Dropbox/Temp
 
 alias vols='cd /Volumes; ls -G'
+
+# Git aliases
+alias gsub='git submodule add ';w
+

@@ -1,0 +1,304 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf350
+{\fonttbl\f0\fnil\fcharset0 Verdana;}
+{\colortbl;\red255\green255\blue255;\red76\green78\blue78;\red0\green0\blue0;\red0\green0\blue255;
+\red64\green128\blue0;\red0\green22\blue176;\red38\green18\blue82;\red74\green30\blue127;\red108\green5\blue211;
+}
+\deftab480
+\pard\pardeftab480\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf2 -- cd to the current finder window folder in iTerm. Or drag a folder onto this script to cd to that folder in iTerm.\cf3 \
+\cf2 -- found this script in the comments of this article: http://www.macosxhints.com/article.php?story=20050924210643297\cf3 \
+\
+\cf2 -- Instructions for use:\cf3 \
+\cf2 -- paste this script into Script Editor and save as an application to ~/Library/Scripts/Applications/Finder/cd to in iTerm\cf3 \
+\cf2 -- run via the AppleScript Menu item (http://www.apple.com/applescript/scriptmenu/)\cf3 \
+\cf2 -- Or better yet, Control-click and drag it to the top of a finder window so it appears in every finder window.\cf3 \
+\cf2 -- Activate it by clicking on it or dragging a folder onto it.\cf3 \
+\
+\cf2 -- Another nice touch is to give the saved script the same icon as iTerm.\cf3 \
+\cf2 -- To do this, in the finder, Get info (Command-I) of both iTerm and this saved script.\cf3 \
+\cf2 -- Click the iTerm icon (it will highlight blue) and copy it by pressing Comand-C.\cf3 \
+\cf2 -- Click on this script's icon and paste by pressing Command-V.\cf3 \
+\
+\cf2 -- Another way to give it the same icon as iTerm is to save the script as an application bundle (instead of an application),\cf3 \
+\cf2 --  then copy the icon by entering these commands in iTerm:\cf3 \
+\cf2 -- $ cd ~/Library/Scripts/Applications/Finder/cd\\ to\\ in\\ iTerm.app/Contents/Resources/\cf3 \
+\cf2 -- $ rm droplet.icns\cf3 \
+\cf2 -- $ cp /Applications/iTerm.app/Contents/Resources/iTerm.icns droplet.icns\cf3 \
+\cf2 -- $ touch ~/Library/Scripts/Applications/Finder/cd\\ to\\ in\\ iTerm.app\cf3 \
+\
+\cf2 -- script was opened by click in toolbar\cf3 \
+\pard\pardeftab480\ql\qnatural\pardirnatural
+
+\b \cf3 on
+\b0  
+\b \cf4 run
+\b0 \cf3 \
+	
+\b tell
+\b0  
+\i \cf4 application
+\i0 \cf3  "Finder"\
+		
+\b try
+\b0 \
+			
+\b set
+\b0  \cf5 currFolder\cf3  
+\b to
+\b0  (
+\i \cf4 folder
+\i0 \cf3  
+\b of
+\b0  
+\b the
+\b0  
+\b front
+\b0  
+\i \cf4 window
+\i0 \cf3  
+\b as
+\b0  
+\i \cf4 string
+\i0 \cf3 )\
+		
+\b on
+\b0  
+\b error
+\b0 \
+			
+\b set
+\b0  \cf5 currFolder\cf3  
+\b to
+\b0  (
+\b \cf6 path to
+\b0 \cf3  \cf7 desktop folder\cf3  \cf6 as\cf3  
+\i \cf4 string
+\i0 \cf3 )\
+		
+\b end
+\b0  
+\b try
+\b0 \
+	
+\b end
+\b0  
+\b tell
+\b0 \
+	\cf5 CD_to\cf3 (\cf5 currFolder\cf3 , \cf8 false\cf3 )\
+
+\b end
+\b0  
+\b \cf4 run
+\b0 \cf3 \
+\
+\pard\pardeftab480\ql\qnatural\pardirnatural
+\cf2 -- script run by draging file/folder to icon\cf3 \
+\pard\pardeftab480\ql\qnatural\pardirnatural
+
+\b \cf3 on
+\b0  
+\b \cf4 open
+\b0 \cf3  (\cf5 theList\cf3 )\
+	
+\b set
+\b0  \cf5 newWindow\cf3  
+\b to
+\b0  \cf8 false\cf3 \
+	
+\b repeat
+\b0  
+\b with
+\b0  \cf5 thePath\cf3  
+\b in
+\b0  \cf5 theList\cf3 \
+		
+\b set
+\b0  \cf5 thePath\cf3  
+\b to
+\b0  \cf5 thePath\cf3  
+\b as
+\b0  
+\i \cf4 string
+\i0 \cf3 \
+		
+\b if
+\b0  
+\b not
+\b0  (\cf5 thePath\cf3  
+\b ends with
+\b0  ":") 
+\b then
+\b0 \
+			
+\b set
+\b0  \cf5 x\cf3  
+\b to
+\b0  
+\b the
+\b0  
+\b \cf6 offset
+\b0 \cf3  \cf6 of\cf3  ":" \cf6 in\cf3  (
+\b the
+\b0  \cf9 reverse\cf3  
+\b of
+\b0  
+\b every
+\b0  
+\i \cf4 character
+\i0 \cf3  
+\b of
+\b0  \cf5 thePath\cf3 ) 
+\b as
+\b0  
+\i \cf4 string
+\i0 \cf3 \
+			
+\b set
+\b0  \cf5 thePath\cf3  
+\b to
+\b0  (
+\i \cf4 characters
+\i0 \cf3  1 
+\b thru
+\b0  -(\cf5 x\cf3 ) 
+\b of
+\b0  \cf5 thePath\cf3 ) 
+\b as
+\b0  
+\i \cf4 string
+\i0 \cf3 \
+		
+\b end
+\b0  
+\b if
+\b0 \
+		\cf5 CD_to\cf3 (\cf5 thePath\cf3 , \cf5 newWindow\cf3 )\
+		
+\b set
+\b0  \cf5 newWindow\cf3  
+\b to
+\b0  \cf8 true\cf3  \cf2 -- create window for any other files/folders\cf3 \
+	
+\b end
+\b0  
+\b repeat
+\b0 \
+	
+\b return
+\b0 \
+
+\b end
+\b0  
+\b \cf4 open
+\b0 \cf3 \
+\
+\pard\pardeftab480\ql\qnatural\pardirnatural
+\cf2 -- cd to the desired directory in iterm\cf3 \
+\pard\pardeftab480\ql\qnatural\pardirnatural
+
+\b \cf3 on
+\b0  \cf5 CD_to\cf3 (\cf5 theDir\cf3 , \cf5 newWindow\cf3 )\
+	
+\b set
+\b0  \cf5 theDir\cf3  
+\b to
+\b0  \cf9 quoted form\cf3  
+\b of
+\b0  \cf9 POSIX path\cf3  
+\b of
+\b0  \cf5 theDir\cf3  
+\b as
+\b0  
+\i \cf4 string
+\i0 \cf3 \
+	
+\b tell
+\b0  
+\i \cf4 application
+\i0 \cf3  "iTerm"\
+		
+\b \cf4 activate
+\b0 \cf3 \
+		
+\b \cf6 delay
+\b0 \cf3  1\
+		\cf2 -- talk to the first terminal \cf3 \
+		
+\b tell
+\b0  
+\b the
+\b0  
+\b first
+\b0  
+\i \cf4 terminal
+\i0 \cf3 \
+			
+\b try
+\b0 \
+				\cf2 -- launch a default shell in a new tab in the same terminal \cf3 \
+				
+\b \cf4 launch
+\b0 \cf3  
+\i \cf4 session
+\i0 \cf3  "Default Session"\
+			
+\b on
+\b0  
+\b error
+\b0 \
+				
+\b \cf6 display dialog
+\b0 \cf3  "There was an error creating a new tab in iTerm." \cf6 buttons\cf3  \{"OK"\}\
+			
+\b end
+\b0  
+\b try
+\b0 \
+			
+\b tell
+\b0  
+\b the
+\b0  
+\b last
+\b0  
+\i \cf4 session
+\i0 \cf3 \
+				
+\b try
+\b0 \
+					\cf2 -- cd to the finder window\cf3 \
+					
+\b \cf4 write
+\b0 \cf3  \cf4 text\cf3  "cd " & \cf5 theDir\cf3 \
+				
+\b on
+\b0  
+\b error
+\b0 \
+					
+\b \cf6 display dialog
+\b0 \cf3  "There was an error cding to the finder window." \cf6 buttons\cf3  \{"OK"\}\
+				
+\b end
+\b0  
+\b try
+\b0 \
+			
+\b end
+\b0  
+\b tell
+\b0 \
+		
+\b end
+\b0  
+\b tell
+\b0 \
+	
+\b end
+\b0  
+\b tell
+\b0 \
+
+\b end
+\b0  \cf5 CD_to}

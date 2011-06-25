@@ -26,6 +26,7 @@ esac
 # Default editor
 VISUAL="vi"
 EDITOR="vi"
+bindkey -v
 
 # History Settings
 # Show the command before executing it using !!, etc.
@@ -73,3 +74,9 @@ fi
 # Colorize directory listings
 LSCOLORS='GxcxcxdxbxegedabagdxBx'
 export LSCOLORS
+
+# Shell keybindings
+bindkey '^p' history-beginning-search-backward
+bindkey '^n' history-beginning-search-forward
+# Control-Q to temporary erase the current line and then put it back for you
+bindkey '\eq' push-line-or-edit
