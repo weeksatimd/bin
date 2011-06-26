@@ -1,4 +1,5 @@
 # zshrc
+# "%{${fg[default]}%}
 # JRW 06/12/11
 #
 # Setting to allow use of colors in prompt
@@ -12,9 +13,9 @@ autoload -U promptinit; promptinit
 autoload -U compinit; compinit
 
 # Set prompt
-PROMPT="%{${fg[white]}%}%~
+PROMPT="%{${fg[magenta]}%}%~
 %# "%{${fg[default]}%}
-RPROMPT='[%w, %T]'
+RPROMPT="%{${fg[magenta]}%}[%w, %T]"%{${fg[default]}%}
 
 # Set the window title to: username@hostname: directory
 case $TERM in
