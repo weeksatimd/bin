@@ -80,9 +80,4 @@ export LSCOLORS
 bindkey '^p' history-beginning-search-backward
 bindkey '^n' history-beginning-search-forward
 # Control-Q to temporary erase the current line and then put it back for you
-bindkey '^q' push-line-or-edit
-bindkey '\eq' backward-kill-line
-
-# Named directories
-teaching=/Users/weeks/Dropbox/Current/Teaching
-current=/Users/weeks/Dropbox/Current
+bindkey '\eq' push-line-or-edit
