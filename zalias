@@ -23,5 +23,3 @@ alias vols='cd /Volumes; ls -G'
 # Git aliases
 alias gsub='git submodule add ';w
 
-# Print each entry on its own line
-alias lprint='print -C 1'
