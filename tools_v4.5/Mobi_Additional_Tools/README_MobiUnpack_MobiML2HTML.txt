@@ -1,0 +1,6 @@
+- MobiUnpack.pyw is a graphical front end to mobiunpack.py that will actually unpack all of the original pieces from a Mobi ebook (assuming the DRM has already been removed) so that you can see the actual mobi specific html and other things. If you have a mobi ebook and would like to recreate it after a few changes, you can use this program to get to the pieces and then repack it to create a modified Mobi ebook.  This is a gui program, simply double-click to launch it.
+
+- MobiML2HTML.pyw is a graphical front end that can be run on the output of MobiUnpack.pyw to convert the Mobi-specific html to normal xhtml for archival purposes or for later conversion to epub or any other ebook format that uses xhtml. (It is a highly modified version of what is done by calibre – in fact the calibre code was the original basis for much of the python code in this program). I use this one a lot to actually “archive” my ebooks by storing the xhtml versions of each book to a data DVD for long-term storage in a format that almost any browser today can read. This is a gui program, simply double-click to launch it.
+
+All of these scripts are python programs.   Python 2.X (32 bit) is already installed in Mac OSX and Linux.  We recommend ActiveState's Active Python Version 2.X (32 bit) for Windows users.
+

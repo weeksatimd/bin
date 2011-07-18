@@ -50,3 +50,5 @@ ruby -e "$(curl -fsSL https://gist.github.com/raw/323731/install_homebrew.rb)"
 # Enable remote disk on a non-Air
 defaults write com.apple.NetworkBrowser EnableODiskBrowsing -bool true
 defaults write com.apple.NetworkBrowser ODSSupported -bool true
+# Show files in your home directory that you don't have read permission for
+cd find . \! -perm -0400 -ls | more
