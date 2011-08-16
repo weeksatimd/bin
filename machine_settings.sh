@@ -52,3 +52,5 @@ defaults write com.apple.NetworkBrowser EnableODiskBrowsing -bool true
 defaults write com.apple.NetworkBrowser ODSSupported -bool true
 # Show files in your home directory that you don't have read permission for
 cd find . \! -perm -0400 -ls | more
+# Change Lion default hiding ~/Library
+chflags nohidden ~/Library
